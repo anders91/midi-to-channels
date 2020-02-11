@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+function kopplaTillNode() {
+  fetch("http://192.168.1.104:4000/", {
+    method: 'POST',
+    body: JSON.stringify({
+      text: "här kommer post, vi testar igen!!!"
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then((response)=>{
+    return response.text()
+  })
+  .then((myResponse)=>{
+    console.log(myResponse)
+  })
+}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Hello World!!!</h1>
+      <button onClick={()=>kopplaTillNode()}>koppla till node</button>
     </div>
-  );
+  )
 }
 
 export default App;
