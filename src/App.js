@@ -3,6 +3,7 @@ import './App.css';
 
 function App() {
 
+const nodeserver = "http://18.194.73.104:4000/";
 const [access, setaccess] = useState(null)
 
 useEffect(() => {
@@ -31,7 +32,7 @@ if(access) {
 
 
 function kopplaTillNode(data) {
-  fetch("http://192.168.1.104:4000/", {
+  fetch(nodeserver, {
     method: 'POST',
     body: JSON.stringify({data}),
     headers: {
